@@ -1,0 +1,79 @@
+{
+    "type": "object",
+    "properties": {
+        "confirmationId": {
+            "required": true,
+            "type": "string"
+        },
+        "reservationNumber": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "requestBody": {
+            "properties": {
+                "authorization": {
+                    "description": "Authorization Details",
+                    "properties": {
+                        "amount": {
+                            "description": "AuthorizedAmount",
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "expiry_date": {
+                            "description": "Authorization ExpiryDate",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "merchant_reference": {
+                            "description": "Merchant Reference",
+                            "maxLength": 50,
+                            "minLength": 0,
+                            "type": "string"
+                        },
+                        "reference": {
+                            "description": "Authorization Reference",
+                            "maxLength": 255,
+                            "minLength": 0,
+                            "type": "string"
+                        },
+                        "shopper_reference": {
+                            "description": "Shopper Reference",
+                            "maxLength": 50,
+                            "minLength": 0,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "reference",
+                        "merchant_reference",
+                        "shopper_reference"
+                    ],
+                    "type": "object"
+                },
+                "no_authorization_required": {
+                    "description": "Whether hetras should skip authorization using the provided token when no authorization details are supplied.\r\n            Optional flag, defaults to false.",
+                    "type": "boolean"
+                },
+                "payment_token": {
+                    "description": "The token you get from the payment service provider",
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "payment_token"
+            ],
+            "type": "object"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

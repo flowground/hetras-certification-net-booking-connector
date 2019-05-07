@@ -1,0 +1,301 @@
+{
+    "type": "object",
+    "properties": {
+        "sendConfirmation": {
+            "required": false,
+            "type": "boolean"
+        },
+        "requestBody": {
+            "properties": {
+                "addons": {
+                    "description": "A list of addon service codes that should be booked for all reservations of this booking",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "adults": {
+                    "description": "The number of adults per room",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "arrival_date": {
+                    "description": "The arrival date of the guests",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "channel_code": {
+                    "description": "The channel code for this reservation. You can find available channels in the codes for the hotel.",
+                    "type": "string"
+                },
+                "comment": {
+                    "description": "The comment you want to add for this reservation",
+                    "type": "string"
+                },
+                "company": {
+                    "description": "The company that will be linked to this reservation",
+                    "properties": {
+                        "company_id": {
+                            "description": "The id of a company profile. The id is build out of the Supplier Code a dash and the profile id\r\n            shown in the hetras UI. An example id on the API for a profile with id 12345 on the level of supplier ABC \r\n            would be ABC-12345",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "contact": {
+                    "description": "The contact that will be linked to this reservation",
+                    "properties": {
+                        "customer_id": {
+                            "description": "The id of a customer profile. The id is build out of the Supplier Code a dash and the profile id\r\n            shown in the hetras UI. An example id on the API for a profile with id 12345 on the level of supplier ABC \r\n            would be ABC-12345",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "departure_date": {
+                    "description": "The departure date of the guests",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "external_id": {
+                    "description": "The external id for this reservation. You can put here your own id used by you or the external system\r\n            you integrate hetras with",
+                    "type": "string"
+                },
+                "group_code": {
+                    "description": "The group code based on which the reservation will be created.",
+                    "type": "string"
+                },
+                "guarantee": {
+                    "description": "The guarantee for this reservation. See https://developer.hetras.com/docs/tutorials#payment for information about\r\n            how to fill out the guarantee object",
+                    "properties": {
+                        "guarantee_type": {
+                            "description": "One of the accepted guarantee types from the offer you selected out of the rates response",
+                            "enum": [
+                                "PM4Hold",
+                                "PM6Hold",
+                                "GuaranteeToCreditCard",
+                                "GuaranteeToGuestAccount",
+                                "GuaranteeByTravelAgent",
+                                "GuaranteeByCompany",
+                                "Deposit",
+                                "Voucher",
+                                "Prepayment",
+                                "NonGuaranteed",
+                                "Tentative",
+                                "Waitlist"
+                            ],
+                            "type": "string"
+                        },
+                        "token": {
+                            "description": "The token to be used for capturing the reservations amount or to guarantee for the reservation",
+                            "properties": {
+                                "authorization_expiry_date": {
+                                    "description": "The authorization expiry date you got back from the payment service provider",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "authorization_reference": {
+                                    "description": "The authorization reference. This value is specific for different payment service providers. There will be\r\n            a page on the developer portal explaining the pattern on how to fill this value for the payment service\r\n            provider hetras is integrated with",
+                                    "type": "string"
+                                },
+                                "authorization_status": {
+                                    "description": "The authorization status you got back from the payment service provider",
+                                    "enum": [
+                                        "Authorized",
+                                        "Refused",
+                                        "Error",
+                                        "Canceled",
+                                        "Consumed",
+                                        "AuthorizedWithZeroAmount"
+                                    ],
+                                    "type": "string"
+                                },
+                                "authorized_amount": {
+                                    "description": "The authorized amount",
+                                    "format": "double",
+                                    "type": "number"
+                                },
+                                "merchant_reference": {
+                                    "description": "The merchant reference you used when requesting the token from the payment service provider",
+                                    "type": "string"
+                                },
+                                "shopper_email": {
+                                    "description": "The shopper email you used when requesting the token from the payment service provider",
+                                    "type": "string"
+                                },
+                                "shopper_reference": {
+                                    "description": "The shopper reference you used when requesting the token from the payment service provider. It can\r\n            be the same as the merchant reference",
+                                    "type": "string"
+                                },
+                                "token_id": {
+                                    "description": "The token id you get from the payment service provider",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "guests": {
+                    "description": "A list of guests with some basic guest details",
+                    "items": {
+                        "properties": {
+                            "consent_subscribe": {
+                                "description": "The list of consents which the customer is subscribing",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "consent_unsubscribe": {
+                                "description": "The list of consents which the customer is unsubscribing",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "customer_id": {
+                                "description": "The id of a customer profile. The id is build out of the Supplier Code a dash and the profile id\r\n            shown in the hetras UI. An example id on the API for a profile with id 12345 on the level of supplier ABC \r\n            would be ABC-12345",
+                                "type": "string"
+                            },
+                            "email": {
+                                "description": "The primary email address of the guest",
+                                "type": "string"
+                            },
+                            "first_name": {
+                                "description": "First name of the guest",
+                                "type": "string"
+                            },
+                            "gender": {
+                                "description": "Gender",
+                                "enum": [
+                                    "Unspecified",
+                                    "Male",
+                                    "Female"
+                                ],
+                                "type": "string"
+                            },
+                            "last_name": {
+                                "description": "Last name of the guest",
+                                "type": "string"
+                            },
+                            "mailing_address": {
+                                "description": "The home mailing address of the guest or if no home mailing address is specified it will\r\n            give you the first address found on the guest profile.",
+                                "properties": {
+                                    "address": {
+                                        "description": "The address details like street, number, and other in free format",
+                                        "type": "string"
+                                    },
+                                    "address_type": {
+                                        "description": "One of the values from the enumeration of allowed address types",
+                                        "enum": [
+                                            "Home",
+                                            "Business",
+                                            "Billing",
+                                            "Other"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "description": "The city name for this address",
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "description": "The country code for this address in ISO 3166-1 alpha-2 format\r\n            (see: <a href=\"http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm\" onfocus=\"this.blur()\" target=\"_blank\">http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm</a>)",
+                                        "type": "string"
+                                    },
+                                    "postal_code": {
+                                        "description": "The postal code for this address",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "nationality": {
+                                "description": "The nationality of the guest in ISO 3166-1 alpha-2 format\r\n            (see: http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm)",
+                                "type": "string"
+                            },
+                            "phone": {
+                                "description": "The primary phone number of the guest",
+                                "type": "string"
+                            },
+                            "primary": {
+                                "description": "Defines if the guest is the primary guest of the reservation",
+                                "type": "boolean"
+                            },
+                            "title": {
+                                "description": "Title of the guest. Needs to be taken from the available titles defined in the codes",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "hotel_id": {
+                    "description": "The id of the hotel this reservation is valid for",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "payment_method": {
+                    "description": "The payment method for this reservation",
+                    "enum": [
+                        "None",
+                        "Cash",
+                        "CreditCard",
+                        "WireTransfer",
+                        "ChargeToCompany",
+                        "Check",
+                        "Voucher",
+                        "DebitCard",
+                        "Token",
+                        "Miscellaneous",
+                        "DigitalPayment"
+                    ],
+                    "type": "string"
+                },
+                "prepay_discount": {
+                    "description": "If you create a booking for a rateplan requiring prepayment this amount will be deducted from the booking value before\r\n            the prepayment will be taken. This feature is useful when the booker redeems a gift voucher and you want to \r\n            only capture the remaining amount from the guest´s credit card",
+                    "format": "double",
+                    "type": "number"
+                },
+                "rate_plan": {
+                    "description": "The rate plan code this reservation is related to",
+                    "type": "string"
+                },
+                "room_type": {
+                    "description": "The room type code this reservation is related to",
+                    "type": "string"
+                },
+                "rooms": {
+                    "description": "The number of rooms this reservation is for. After a multi-room booking is done there will be \r\n            one reservation in hetras for all rooms. The hotel staff then will split this reservation into\r\n            one reservation per room to be able to check in the guests",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "travel_agent": {
+                    "description": "The travel agency that will be linked to this reservation",
+                    "properties": {
+                        "company_id": {
+                            "description": "The id of a company profile. The id is build out of the Supplier Code a dash and the profile id\r\n            shown in the hetras UI. An example id on the API for a profile with id 12345 on the level of supplier ABC \r\n            would be ABC-12345",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "hotel_id"
+            ],
+            "type": "object"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

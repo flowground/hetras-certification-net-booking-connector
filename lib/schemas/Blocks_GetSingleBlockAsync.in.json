@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "blockCode": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "CanBeCanceled": {
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "IsCancellationRequested": {
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "WaitHandle": {
+                    "readOnly": true,
+                    "properties": {
+                        "Handle": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "SafeWaitHandle": {
+                            "properties": {
+                                "IsClosed": {
+                                    "readOnly": true,
+                                    "type": "boolean"
+                                },
+                                "IsInvalid": {
+                                    "readOnly": true,
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

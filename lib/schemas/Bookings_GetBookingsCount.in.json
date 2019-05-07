@@ -1,0 +1,157 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "cancellationId": {
+            "required": false,
+            "type": "string"
+        },
+        "reservationNumber": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "customerName": {
+            "required": false,
+            "type": "string"
+        },
+        "customerEmail": {
+            "required": false,
+            "type": "string"
+        },
+        "customerId": {
+            "required": false,
+            "type": "string"
+        },
+        "roomNumber": {
+            "required": false,
+            "type": "string"
+        },
+        "externalId": {
+            "required": false,
+            "type": "string"
+        },
+        "companyName": {
+            "required": false,
+            "type": "string"
+        },
+        "companyId": {
+            "required": false,
+            "type": "string"
+        },
+        "companyEmail": {
+            "required": false,
+            "type": "string"
+        },
+        "blockCode": {
+            "required": false,
+            "type": "string"
+        },
+        "reservationStatuses": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "enum": [
+                    "Tentative",
+                    "Waitlisted",
+                    "OnRequest",
+                    "NonGuaranteed",
+                    "Guaranteed",
+                    "InHouse",
+                    "CheckedOut",
+                    "NoShow",
+                    "Denied",
+                    "Cancelled",
+                    "Released",
+                    "Walked",
+                    "Expired",
+                    "WalkIn",
+                    "Registered"
+                ],
+                "type": "string"
+            }
+        },
+        "marketCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "channelCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "subChannelCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "roomTypes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "ratePlanCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "labels": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "from": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "to": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "dateFilter": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "ArrivalDate",
+                "DepartureDate",
+                "StayDate",
+                "CreationDate",
+                "ModificationDate"
+            ]
+        },
+        "exclude": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Customers"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

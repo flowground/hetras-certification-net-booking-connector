@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "arrivalDate": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "departureDate": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "channelCode": {
+            "required": true,
+            "type": "string"
+        },
+        "adults": {
+            "required": true,
+            "type": "string",
+            "format": "byte"
+        },
+        "rooms": {
+            "required": false,
+            "type": "string",
+            "format": "byte"
+        },
+        "roomType": {
+            "required": false,
+            "type": "string"
+        },
+        "ratePlanCode": {
+            "required": false,
+            "type": "string"
+        },
+        "groupCode": {
+            "required": false,
+            "type": "string"
+        },
+        "expand": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "Breakdown"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

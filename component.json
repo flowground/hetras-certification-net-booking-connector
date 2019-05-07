@@ -1,0 +1,415 @@
+{
+    "title": "hetras Booking API Version 0",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/hetras-certification.net/booking/v0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.hetras-certification.net/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Addons_Get": {
+            "main": "./lib/actions/Addons_Get.js",
+            "title": "Get a list of offers for addon services for the specified guest stay details.",
+            "description": "With the addons request you can get a list of offers for addon services available for a specific rate, room type\r\n            and guest stay details.The channel code will define which rates will be returned based on the access control \r\n            configuration for related rates.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Addons_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Availability_Get": {
+            "main": "./lib/actions/Availability_Get.js",
+            "title": "Gets the availability and occupancy for a specific hotel and timespan.",
+            "description": "Read past occupancy and future availability for a specific hotel. You can also request the breakdown per room type.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Availability_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Blocks_GetBlocksAsync": {
+            "main": "./lib/actions/Blocks_GetBlocksAsync.js",
+            "title": "Gets a list of blocks.",
+            "description": "With this endpoint you can request a list of blocks for the hotel chain. Currently we only support to optionally\r\n            filter by the group code linked to the block. Additional filters will be available soon.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blocks_GetBlocksAsync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Blocks_GetBlocksCountAsync": {
+            "main": "./lib/actions/Blocks_GetBlocksCountAsync.js",
+            "title": "Get total blocks count that match the given filter criteria.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blocks_GetBlocksCountAsync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Blocks_GetSingleBlockAsync": {
+            "main": "./lib/actions/Blocks_GetSingleBlockAsync.js",
+            "title": "Gets the details for a specific block.",
+            "description": "Read all informationen about a block including the numbers of blocked rooms per room type and business day.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blocks_GetSingleBlockAsync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_GetBookings": {
+            "main": "./lib/actions/Bookings_GetBookings.js",
+            "title": "Find bookings matching the given filter criteria.",
+            "description": "Here you can easily find bookings matching various criteria. The booking you are looking for has to fullfill all the specified criteria\r\n            at the same time. So if you specify a customer name and a channel code you will get all bookings where the firstname or lastname of a guest or a \r\n            contact contains the specified value and that have been done through the defined channel.\r\n            A booking can consist of multiple reservations, so even if you are looking for a specific reservation which is part of a multi-room booking you will get\r\n            all reservations for this booking returned.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_GetBookings.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_CreateBooking": {
+            "main": "./lib/actions/Bookings_CreateBooking.js",
+            "title": "Create a new booking.",
+            "description": "Create a new booking as defined in the requests payload. You can get more information about the payload if you check out the\r\n            documentation for the reservation request model.<br />\r\n            Please also have a look at the <a href=\"https://developer.hetras.com/docs/tutorials\" onfocus=\"this.blur()\">Tutorials</a>.<br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_CreateBooking.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_GetBookingsCount": {
+            "main": "./lib/actions/Bookings_GetBookingsCount.js",
+            "title": "Get total count of bookings matchung the given filter criteria.",
+            "description": "Get the count of all bookings matching your criteria. The bookings have to fullfill all the specified criteria\r\n            at the same time. So if you specify a customer name and a channel code you will get the count for all bookings where the firstname or lastname \r\n            of a guest or a contact contains the specified value and that have been done through the defined channel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_GetBookingsCount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_GetBooking": {
+            "main": "./lib/actions/Bookings_GetBooking.js",
+            "title": "Load all reservations for one booking by confirmation id.",
+            "description": "A booking groups all reservations done in one single request and can be identified by the confirmation id.\r\n            Guests usually use the confirmation id to check in at the kiosk, on the website or mobile device. In hetras\r\n            all reservations of one booking share the room type, rate plan and number of guests per room.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_GetBooking.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_GetReservation": {
+            "main": "./lib/actions/Bookings_GetReservation.js",
+            "title": "Load a specific reservation from a booking.",
+            "description": "With this request you can load one specific reservation done with one booking request.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_GetReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_Patch": {
+            "main": "./lib/actions/Bookings_Patch.js",
+            "title": "Partially updates a reservation.",
+            "description": "The hetras API is using this <a href=\"https://developer.hetras.com/docs/patch\" onfocus=\"this.blur()\" target=\"_blank\">Patch Specification</a>\r\n            to partially update an existing resource. Currently this call allows to update the following fields:\r\n            external_id, market_code, channel_code, subchannel_code, guarantee_type, comment, addon_services, labels, guests, contact and company.\r\n            <br /><br />\r\n            A request example:<br /><pre>\r\n            [\r\n              {\r\n                \"op\": \"replace\", \"path\": \"/addon_services\", \"value\": [\"BREAKFAST\", \"PARKING\"]\r\n              },\r\n              {\r\n                \"op\": \"add\", \"path\": \"/labels/-\", \"value\": \"MOBILE\"\r\n              },\r\n              {\r\n                \"op\": \"replace\", \"path\": \"/guests/SHOW-1234\", \"value\": { \"customer_id\": \"SHOW-1234\", \"primary\": false }\r\n              },\r\n              {\r\n                \"op\": \"add\", \"path\": \"/guests/-\", \"value\": { \"customer_id\": \"SHOW-5678\", \"primary\": true }\r\n              }\r\n            ]\r\n            </pre><br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_Patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_PostRoomAssignment": {
+            "main": "./lib/actions/Bookings_PostRoomAssignment.js",
+            "title": "Assign a room to a reservation.",
+            "description": "By default this API call assigns a random room, which has the proper room type, is not already assigned\r\n            to another reservation or has any maintenance status set for the stay period of the underlying reservation. If the\r\n            arrival date for the underlying reservation is the current business day dirty rooms are excluded by default. For reservation\r\n            arriving on any latter day the room condition is not taken into account.<br />\r\n            By specifiying the room selection criteria in the request body you can influence which room will be assigned. See the request model\r\n            for further details.<br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_PostRoomAssignment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_CancelReservation": {
+            "main": "./lib/actions/Bookings_CancelReservation.js",
+            "title": "Cancel one reservation.",
+            "description": "This request will cancel one specific reservation. It will show up in the hetras UI in the Cancellation and NoShow\r\n            processing screen and it will be up to the hotel staff to either charge or waive the cancellation fee.<br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_CancelReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_CheckIn": {
+            "main": "./lib/actions/Bookings_CheckIn.js",
+            "title": "Performs a check in operation for a reservation.",
+            "description": "With this call you can set a reservation to the status inhouse. It allows only single room reservations to be checked in.\r\n            The reservation must have assigned a vacant and clean room.<br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_CheckIn.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_CheckOut": {
+            "main": "./lib/actions/Bookings_CheckOut.js",
+            "title": "Performs a check out operation for a reservation.",
+            "description": "With this call you can set a reservation to the checkout status. It allows only single room reservations to be checked out.\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_CheckOut.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_PaymentToken": {
+            "main": "./lib/actions/Bookings_PaymentToken.js",
+            "title": "Post a payment token for a reservation.",
+            "description": "TBD.<br />\r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_PaymentToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookings_TerminalAuthorization": {
+            "main": "./lib/actions/Bookings_TerminalAuthorization.js",
+            "title": "Performs a chip and pin credit card authorization for a reservation.",
+            "description": "With this call you can trigger a terminal authorization prompt for a reservation guest. \r\n            For more details on how the API responds to errors please check our documentation on \r\n            <a href=\"https://developer.hetras.com/docs/errors/\" onfocus=\"this.blur()\">Error Handling</a>.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookings_TerminalAuthorization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DailyRates_GetDailyRates": {
+            "main": "./lib/actions/DailyRates_GetDailyRates.js",
+            "title": "Get a list of daily rates given a hotel Id, a channel code and a date range.",
+            "description": "With the rates request you can get a list of different daily rates. You will have to at least \r\n            specify the hotel, the channel code, and a calendar range. The channel code will define which rates will be \r\n            returned based on the access control configuration for the rates. Additionally rate plan codes may be specified in\r\n            the request in order to limit only those rates of the given plans, if they are not specified, it will return all the public rate plans.\r\n            If requested the caller may specify whether he wants policies or not.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DailyRates_GetDailyRates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Rates_Get": {
+            "main": "./lib/actions/Rates_Get.js",
+            "title": "Get a list of room offers for the specified guest stay details.",
+            "description": "With the rates request you can get a list of different rate offers per room type. You will have to at least \r\n            specify the hotel, the arrival and departure date, number of adults per room and the channel code. The channel code\r\n            will define which rates will be returned based on the access control configuration for the rates.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Rates_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

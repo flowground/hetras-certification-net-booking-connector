@@ -1,0 +1,69 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "from": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "to": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "channelCode": {
+            "required": true,
+            "type": "string"
+        },
+        "expand": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "enum": [
+                    "None",
+                    "Policies",
+                    "RatePlans"
+                ],
+                "type": "string"
+            }
+        },
+        "ratePlanCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "top": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "inlinecount": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "AllPages"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

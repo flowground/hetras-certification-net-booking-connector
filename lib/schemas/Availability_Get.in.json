@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "from": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "to": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "expand": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "RoomTypes"
+            ]
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "top": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "inlinecount": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "AllPages"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

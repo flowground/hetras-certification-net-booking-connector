@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "properties": {
+        "hotelId": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "groupCode": {
+            "required": false,
+            "type": "string"
+        },
+        "from": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "to": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Cancelled",
+                "Tentative",
+                "Definite"
+            ]
+        },
+        "ratePlanCodes": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "countDetails": {
+            "required": false,
+            "type": "boolean"
+        },
+        "skip": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "top": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "inlinecount": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "AllPages"
+            ]
+        },
+        "requestBody": {
+            "properties": {
+                "CanBeCanceled": {
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "IsCancellationRequested": {
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "WaitHandle": {
+                    "readOnly": true,
+                    "properties": {
+                        "Handle": {
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "SafeWaitHandle": {
+                            "properties": {
+                                "IsClosed": {
+                                    "readOnly": true,
+                                    "type": "boolean"
+                                },
+                                "IsInvalid": {
+                                    "readOnly": true,
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

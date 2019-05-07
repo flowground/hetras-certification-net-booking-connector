@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "confirmationId": {
+            "required": true,
+            "type": "string"
+        },
+        "reservationNumber": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "expand": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "RoomRates"
+            ]
+        },
+        "exclude": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "None",
+                "Customers"
+            ]
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "confirmationId": {
+            "required": true,
+            "type": "string"
+        },
+        "reservationNumber": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "requestBody": {
+            "properties": {
+                "client_identity": {
+                    "description": "Client identity",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "App_Id": {
+            "required": true,
+            "type": "string"
+        },
+        "App_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
